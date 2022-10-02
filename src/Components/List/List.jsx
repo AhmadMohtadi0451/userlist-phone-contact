@@ -12,8 +12,8 @@ const List = (props) => {
               src={`https://avatars.dicebear.com/api/avataaars/${user.email}.svg`}
               alt=""
             />
-            <div className={classes.list}>
-              <li key={user.id}>
+            <div key={user.id} className={classes.list}>
+              <li>
                 <span>Fullname :</span> {user.firstname} {user.lastname}
               </li>
               <li>
@@ -26,7 +26,6 @@ const List = (props) => {
                 <span>Country :</span> {user.country}
               </li>
               <li>
-                {" "}
                 <span>Age :</span> {user.age}
               </li>
             </div>
