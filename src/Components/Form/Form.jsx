@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import classes from "./Form.module.css";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import ErrorModal from "../ErrorModal/ErrorModal";
+
 const Form = (props) => {
-  const [enteredFirstname, setEnteredFirstname] = useState("");
-  const [enteredLastname, setEnteredLastname] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredPhone, setEnteredPhone] = useState("");
-  const [enteredCountry, setEnteredCountry] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  const firstnameInputRef = useRef();
+  const lastnameInputRef = useRef();
+  const emailInputRef = useRef();
+  const phoneInputRef = useRef();
+  const countryInputRef = useRef();
+  const ageInputRef = useRef();
   const [error, setError] = useState();
   const submitChangeHandler = (event) => {
+    const enteredFirstname = firstnameInputRef.current.value;
+    const enteredLastname = lastnameInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPhone = phoneInputRef.current.value;
+    const enteredCountry = countryInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
     event.preventDefault();
     if (
       enteredFirstname.trim().length === 0 ||
@@ -42,92 +49,44 @@ const Form = (props) => {
       enteredCountry,
       enteredAge
     );
-    setEnteredFirstname("");
-    setEnteredLastname("");
-    setEnteredEmail("");
-    setEnteredPhone("");
-    setEnteredCountry("");
-    setEnteredAge("");
-  };
-
-  const firstnameChangeHandler = (event) => {
-    setEnteredFirstname(event.target.value);
-  };
-  const lastnameChangeHandler = (event) => {
-    setEnteredLastname(event.target.value);
-  };
-  const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
-  };
-  const phoneChangeHandler = (event) => {
-    setEnteredPhone(event.target.value);
-  };
-  const countryChangeHandler = (event) => {
-    setEnteredCountry(event.target.value);
-  };
-  const dateChangeHandler = (event) => {
-    setEnteredAge(event.target.value);
+    firstnameInputRef.current.value = "";
+    lastnameInputRef.current.value = "";
+    emailInputRef.current.value = "";
+    phoneInputRef.current.value = "";
+    countryInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
   const errorHandler = () => {
     setError(null);
   };
   return (
-    <Card className={classes.input}>
-      {error && (
-        <ErrorModal
-          title={error.title}
-          message={error.message}
-          onHandlerError={errorHandler}
-        />
-      )}
-      <form onSubmit={submitChangeHandler} action="">
-        <label htmlFor="firstname">Firstname:</label>
-        <input
-          value={enteredFirstname}
-          onChange={firstnameChangeHandler}
-          id="firstname"
-          type="text"
-        />
-        <label htmlFor="lastname">Lastname:</label>
-        <input
-          value={enteredLastname}
-          onChange={lastnameChangeHandler}
-          id="lastname"
-          type="text"
-        />
-        <label htmlFor="email">Email:</label>
-        <input
-          value={enteredEmail}
-          onChange={emailChangeHandler}
-          id="email"
-          type="text"
-        />
-        <label htmlFor="phone">Phone Number:</label>
-        <input
-          value={enteredPhone}
-          onChange={phoneChangeHandler}
-          id="phone"
-          type="number"
-        />
-        <label htmlFor="country">Country:</label>
-        <input
-          value={enteredCountry}
-          onChange={countryChangeHandler}
-          id="country"
-          type="text"
-        />
-        <label htmlFor="date">Age :</label>
-        <input
-          value={enteredAge}
-          onChange={dateChangeHandler}
-          id="Age"
-          type="number"
-        />
-        <Button type="submit">Add User</Button>
-        <Button type="submit">Cancel</Button>
-      </form>
-    </Card>
+    <React.Fragment>
+      <Card className={classes.input}>
+        {error && (
+          <ErrorModal
+            title={error.title}
+            message={error.message}
+            onHandlerError={errorHandler}
+          />
+        )}
+        <form onSubmit={submitChangeHandler} action="">
+          <label htmlFor="firstname">Firstname:</label>
+          <input id="firstname" type="text" ref={firstnameInputRef} />
+          <label htmlFor="lastname">Lastname:</label>
+          <input id="lastname" type="text" ref={lastnameInputRef} />
+          <label htmlFor="email">Email:</label>
+          <input id="email" type="text" ref={emailInputRef} />
+          <label htmlFor="phone">Phone Number:</label>
+          <input id="phone" type="number" ref={phoneInputRef} />
+          <label htmlFor="country">Country:</label>
+          <input id="country" type="text" ref={countryInputRef} />
+          <label htmlFor="date">Age :</label>
+          <input id="Age" type="number" ref={ageInputRef} />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </React.Fragment>
   );
 };
 

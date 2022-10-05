@@ -4,9 +4,7 @@
   max-width: 40rem;
   margin-bottom: 10px;
 }
-.profile {
-  display: flex;
-}
+
 .list {
   display: flex;
   flex-direction: column;
