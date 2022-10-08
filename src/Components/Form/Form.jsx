@@ -3,6 +3,7 @@ import classes from "./Form.module.css";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import ErrorModal from "../ErrorModal/ErrorModal";
+import { Link } from "react-router-dom";
 
 const Form = (props) => {
   const firstnameInputRef = useRef();
@@ -83,7 +84,9 @@ const Form = (props) => {
           <input id="country" type="text" ref={countryInputRef} />
           <label htmlFor="date">Age :</label>
           <input id="Age" type="number" ref={ageInputRef} />
+          {/* <Link to="/"> */}
           <Button type="submit">Add User</Button>
+          {/* </Link> */}
         </form>
       </Card>
     </React.Fragment>
