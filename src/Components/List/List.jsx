@@ -2,7 +2,6 @@ import React from "react";
 import Card from "../Card/Card";
 import classes from "./List.module.css";
 import Button from "../Button/Button";
-import { NavLink } from "react-router-dom";
 
 const List = (props) => {
   return (
@@ -35,9 +34,7 @@ const List = (props) => {
                   <span>Age :</span> {user.age}
                 </li>
               </div>
-              <Button className={classes.button}>
-                <NavLink to={`/profile/${user.id}`}>View Profile</NavLink>
-              </Button>
+              <Button className={classes.button}>Delete</Button>
             </div>
           ))}
         </ul>
