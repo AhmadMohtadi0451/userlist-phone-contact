@@ -1,8 +1,8 @@
 .input {
   margin: 2rem auto;
   padding: 2rem;
-  width: 90%;
-  max-width: 40rem;
+  width: 100%;
+  max-width: 50rem;
 }
 .input label {
   display: block;

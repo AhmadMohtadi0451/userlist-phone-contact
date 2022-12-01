@@ -1,19 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "./Components/Form/Form";
 import List from "./Components/List/List";
-import Profile from "./Pages/Profile/Profile";
-import { Route, Switch, useParams } from "react-router-dom";
+import Header from "./Components/Header/Header";
 
 function App() {
   const [userList, setUserList] = useState([]);
-  const { profileId } = useParams();
-  // useEffect(() => {
-  //   const infoProfile = userList.filter(
-  //     (item) => item.id === Number(profileId)
-  //   )[0];
-  //   setUserList(infoProfile);
-  // }, []);
 
   const addUserHandler = (firstname, lastname, email, phone, country, age) => {
     setUserList((prevUserList) => {
@@ -33,15 +25,9 @@ function App() {
   };
   return (
     <React.Fragment>
-      <Switch>
-        <Route path="/" exact>
-          <Form addUser={addUserHandler} />
-          <List users={userList} />
-        </Route>
-        <Route path="/profile/:profileId" exact>
-          <Profile />
-        </Route>
-      </Switch>
+      <Header />
+      <Form addUser={addUserHandler} />
+      <List users={userList} />
     </React.Fragment>
   );
 }

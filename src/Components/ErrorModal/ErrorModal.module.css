@@ -12,13 +12,13 @@
   position: fixed;
   top: 35vh;
   left: 10%;
-  width: 80%;
+  width: 90%;
   z-index: 100;
   overflow: hidden;
 }
 
 .header {
-  background: #4f005f;
+  background: rgb(0, 187, 211);
   padding: 1rem;
 }
 
