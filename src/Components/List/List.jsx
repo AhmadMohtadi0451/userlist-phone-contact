@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
 import classes from "./List.module.css";
-import Button from "../Button/Button";
 
 const List = (props) => {
   return (
@@ -34,7 +33,6 @@ const List = (props) => {
                   <span>Age :</span> {user.age}
                 </li>
               </div>
-              <Button className={classes.button}>Delete</Button>
             </div>
           ))}
         </ul>
